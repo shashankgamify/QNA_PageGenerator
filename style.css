@@ -15,3 +15,8 @@ pre {
     padding: 10px; 
     margin-left: 20px;
 }
+
+pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

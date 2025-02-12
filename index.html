@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q&A Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">  <!-- Link to external CSS file -->
 </head>
 <body>
     <h1>Questions and Answers</h1>
@@ -17,8 +17,8 @@
 <p>String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.</p>
 <p>Example 1:</p>
 <pre><code>var x = 3;
-var y = "3";
-x + y // Returns "33</code></pre>
+			var y = "3";
+			x + y // Returns "33</code></pre>
 <h3><b>4. What is variable hoisting in JS</b></h3>
 <p>console.log(myvar); // output undefined</p>
 <p>var myvar = 10;</p>
@@ -33,81 +33,81 @@ x + y // Returns "33</code></pre>
 <h3><b>7. What is currying in JavaScript?</b></h3>
 <p>It is a technique in functional programming, that transforms the</p>
 <p>function of multiple arguments into several functions of a single argument in sequence</p>
-<p>function add (a) {</p>
-<p>return function(b){</p>
-<pre><code>return a + b;</code></pre>
-<p>}</p>
-<p>}</p>
-<p>add(3)(4);</p>
+<pre><code>function add (a) {
+			  return function(b){
+				return a + b;
+			  }
+			}
+			add(3)(4);</code></pre>
 <h3><b>8. What is Closures in JavaScript?</b></h3>
-<p>var Person = function(pName){</p>
-<p>var name = pName;</p>
-<p>this.getName = function(){</p>
-<pre><code>return name;</code></pre>
-<p>}</p>
-<p>}</p>
-<p>var person = new Person("Neelesh");</p>
-<p>console.log(person.getName());</p>
+<pre><code>var Person = function(pName){
+			  var name = pName;
+			  this.getName = function(){
+				return name;
+			  }
+			}
+			var person = new Person("Neelesh");
+			console.log(person.getName());</code></pre>
 <h3><b>9. What is Rest Parameter?</b></h3>
 <p>The rest parameter allows a function to accept an indefinite number of arguments as an array.</p>
-<p>function sum(...numbers) {</p>
-<p>return numbers.reduce((acc, curr) => acc + curr, 0);</p>
-<p>}</p>
-<p>console.log(sum(1, 2, 3)); // Output: 6</p>
-<p>console.log(sum(4, 5, 6, 7)); // Output: 22</p>
+<pre><code>function sum(...numbers) {
+				return numbers.reduce((acc, curr) => acc + curr, 0);
+			}
+			console.log(sum(1, 2, 3)); // Output: 6
+			console.log(sum(4, 5, 6, 7)); // Output: 22</code></pre>
 <p>Rest Parameter (...): Used in function definitions to gather an indefinite number of arguments into an array.</p>
 <p>Spread Operator (...): Used to expand an array or object into individual elements or key-value pairs.</p>
 <h3><b>10. What is object destructuring in js?</b></h3>
 <p>Object destructuring in JavaScript is a syntax that allows you to extract properties from objects and bind them to variables.</p>
 <p>This feature provides a more concise and readable way to access and assign variables from objects,</p>
 <p>especially when dealing with complex structures or nested objects</p>
-<p>const person = {</p>
-<p>name: 'John',</p>
-<p>age: 30,</p>
-<p>city: 'New York'</p>
-<p>};</p>
-<p>const { name, age, city } = person;</p>
-<p>console.log(name); // Output: John</p>
-<p>console.log(age);  // Output: 30</p>
-<p>console.log(city); // Output: New York</p>
+<pre><code>const person = {
+				name: 'John',
+				age: 30,
+				city: 'New York'
+			};
+			const { name, age, city } = person;
+			console.log(name); // Output: John
+			console.log(age);  // Output: 30
+			console.log(city); // Output: New York</code></pre>
 <h3><b>11. What is weakmap in javascript</b></h3>
 <p>WeakMap is a collection of key-value pairs where the keys are objects and the values can be arbitrary values.</p>
-<p>class SomeClass {</p>
-<p>private static _privateData = new WeakMap<SomeClass, any>();</p>
-<p>constructor() {</p>
-<pre><code>SomeClass._privateData.set(this, { hidden: "secret" });</code></pre>
-<p>}</p>
-<p>getSecret() {</p>
-<pre><code>return SomeClass._privateData.get(this).hidden;</code></pre>
-<p>}</p>
-<p>}</p>
-<p>let instance = new SomeClass();</p>
-<p>console.log(instance.getSecret());</p>
+<pre><code>class SomeClass {
+				private static _privateData = new WeakMap<SomeClass, any>();
+				constructor() {
+					SomeClass._privateData.set(this, { hidden: "secret" });
+				}
+				getSecret() {
+					return SomeClass._privateData.get(this).hidden;
+				}
+			}
+			let instance = new SomeClass();
+			console.log(instance.getSecret());</code></pre>
 <h3><b>12. What is set in JavaScript?</b></h3>
 <p>A Set is a collection of values where each value must be unique. It can hold any type of values, whether primitive or object references.</p>
 <p>Set maintains the insertion order of the elements and provides various methods to manipulate and iterate over its elements.</p>
-<p>let mySet = new Set();</p>
-<p>mySet.add(1);</p>
-<p>mySet.add(5);</p>
-<p>mySet.add(5); // Duplicate value, ignored</p>
-<p>mySet.add('some text');</p>
-<p>mySet.add({ a: 1, b: 2 });</p>
-<p>console.log(mySet.size); // Output: 4</p>
-<p>mySet.forEach(value => {</p>
-<p>console.log(value);</p>
-<p>});</p>
+<pre><code>let mySet = new Set();
+			mySet.add(1);
+			mySet.add(5);
+			mySet.add(5); // Duplicate value, ignored
+			mySet.add('some text');
+			mySet.add({ a: 1, b: 2 });
+			console.log(mySet.size); // Output: 4
+			mySet.forEach(value => {
+				console.log(value);
+			});</code></pre>
 <h3><b>13. What is weakset?</b></h3>
 <p>A WeakSet is a collection of objects where the objects are held weakly, meaning that</p>
 <p>if there are no other references to an object stored in the WeakSet, the object can be garbage collected.</p>
 <p>let weakSet = new WeakSet();</p>
-<p>let obj1 = { a: 1 };</p>
-<p>let obj2 = { b: 2 };</p>
-<p>weakSet.add(obj1);</p>
-<p>weakSet.add(obj2);</p>
-<p>console.log(weakSet.has(obj1)); // Output: true</p>
-<p>obj1 = null; // obj1 is now eligible for garbage collection</p>
-<p>// After garbage collection, obj1 will be removed from the WeakSet</p>
-<p>console.log(weakSet.has(obj1)); // Output: false (after garbage collection)</p>
+<pre><code>let obj1 = { a: 1 };
+			let obj2 = { b: 2 };
+			weakSet.add(obj1);
+			weakSet.add(obj2);
+			console.log(weakSet.has(obj1)); // Output: true
+			obj1 = null; // obj1 is now eligible for garbage collection
+			// After garbage collection, obj1 will be removed from the WeakSet
+			console.log(weakSet.has(obj1)); // Output: false (after garbage collection)</code></pre>
 <p>Set:</p>
 <p>Stores unique values of any type.</p>
 <p>Maintains insertion order.</p>
@@ -118,82 +118,83 @@ x + y // Returns "33</code></pre>
 <p>Not iterable and does not provide methods to list its elements.</p>
 <h3><b>14. What is parameter destructuring?</b></h3>
 <p>Parameter destructing allows a function to unpack the object provided as an argument into one or more local variables.</p>
-<p>function multiply({ a, b, c }: { a: number; b: number; c: number }) {</p>
-<p>console.log(a * b * c);</p>
-<p>}</p>
-<p>multiply({ a: 1, b: 2, c: 3 });</p>
+<pre><code>function multiply({ a, b, c }: { a: number; b: number; c: number }) {
+				console.log(a * b * c);
+			}
+			multiply({ a: 1, b: 2, c: 3 });</code></pre>
 <h3><b>15. What is meant by type inference?</b></h3>
 <p>TypeScript can infer the type of a variable when you don’t provide an explicit type.</p>
 <h3><b>16. What is meant by contextual typing?</b></h3>
 <p>When the TypeScript compiler uses the location (or context) of a variable to infer its type, it’s called contextual typing.</p>
 <p>This allows it to infer the type of the e parameter, which does have a button property but not a property named foo.</p>
-<p>window.onmousedown = function (e) {</p>
-<p>console.log(e.button); //<- OK</p>
-<p>console.log(e.foo); //<- Error!</p>
-<p>};</p>
+<pre><code>window.onmousedown = function (e) {
+				console.log(e.button); //<- OK	
+				console.log(e.foo); //<- Error!
+			};</code></pre>
 <h3><b>17. TypeScript - Abstract Class</b></h3>
 <p>Define an abstract class in Typescript using the abstract keyword. Abstract classes are mainly for inheritance where other</p>
 <p>classes may derive from them. We cannot create an instance of an abstract class.</p>
 <p>An abstract class typically includes one or more abstract methods or property declarations.</p>
 <p>The class which extends the abstract class must define all the abstract methods.</p>
-<p>abstract class Person {</p>
-<p>name: string;</p>
-<p>constructor(name: string) {</p>
-<pre><code>this.name = name;</code></pre>
-<p>}</p>
-<p>display(): void{</p>
-<pre><code>console.log(this.name);</code></pre>
-<p>}</p>
-<p>abstract find(string): Person;</p>
-<p>}</p>
-<p>class Employee extends Person {</p>
-<p>empCode: number;</p>
-<p>constructor(name: string, code: number) {</p>
-<pre><code>super(name); // must call super()
-this.empCode = code;</code></pre>
-<p>}</p>
-<p>find(name:string): Person {</p>
-<pre><code>// execute AJAX request to find an employee from a db
-return new Employee(name, 1);</code></pre>
-<p>}</p>
-<p>}</p>
-<p>let emp: Person = new Employee("James", 100);</p>
-<p>emp.display(); //James</p>
-<p>let emp2: Person = emp.find('Steve');</p>
-<p>______________________/////////////</p>
-<p>abstract class Person {</p>
-<p>abstract name: string;</p>
-<p>display(): void{</p>
-<pre><code>console.log(this.name);</code></pre>
-<p>}</p>
-<p>}</p>
-<p>class Employee extends Person {</p>
-<p>name: string;</p>
-<p>empCode: number;</p>
-<p>constructor(name: string, code: number) {</p>
-<pre><code>super(); // must call super()
-this.empCode = code;
-this.name = name;</code></pre>
-<p>}</p>
-<p>}</p>
-<p>let emp: Person = new Employee("James", 100);</p>
-<p>emp.display(); //James</p>
+<p>Example 1:</p>
+<pre><code>abstract class Person {
+				name: string;
+				constructor(name: string) {
+					this.name = name;
+				}
+				display(): void{
+					console.log(this.name);
+				}
+				abstract find(string): Person;
+			}
+			class Employee extends Person { 
+				empCode: number;
+				constructor(name: string, code: number) { 
+					super(name); // must call super()
+					this.empCode = code;
+				}
+				find(name:string): Person { 
+					// execute AJAX request to find an employee from a db
+					return new Employee(name, 1);
+				}
+			}
+			let emp: Person = new Employee("James", 100);
+			emp.display(); //James
+			let emp2: Person = emp.find('Steve');</code></pre>
+<p>Example 2:</p>
+<pre><code>abstract class Person {
+				abstract name: string;
+				display(): void{
+					console.log(this.name);
+				}
+			}
+			class Employee extends Person { 
+				name: string;
+				empCode: number;
+				constructor(name: string, code: number) { 
+					super(); // must call super()
+					this.empCode = code;
+					this.name = name;
+				}
+			}
+			let emp: Person = new Employee("James", 100);
+			emp.display(); //James</code></pre>
 <h3><b>18. what is interface in typescript</b></h3>
 <p>In TypeScript, an interface is a way to define the structure of an object.</p>
 <p>It specifies the types of properties and methods that an object can have,</p>
-<p>interface Person {</p>
-<p>name: string;</p>
-<p>age: number;</p>
-<p>address?: string; // Optional property</p>
-<p>}</p>
-<p>function greet(person: Person) {</p>
-<p>console.log(`Hello, ${person.name}`);</p>
-<p>}</p>
-<p>const john: Person = {</p>
-<p>name: 'John',</p>
-<p>age: 30</p>
-<p>};</p>
-<p>greet(john); // Output: Hello, John</p>
+<pre><code>interface Person {
+				name: string;
+				age: number;
+				address?: string; // Optional property
+			}
+			function greet(person: Person) {
+				console.log(`Hello, ${person.name}`);
+			}
+			const john: Person = {
+				name: 'John',
+				age: 30
+			};
+			greet(john); // Output: Hello, John</code></pre>
 <h3><b>19. What are diffrence bet type and interfaces</b></h3>
 <p>type SuccessResponse = { status: "success"; data: any };</p>
 <p>type ErrorResponse = { status: "error"; message: string };</p>
@@ -203,30 +204,30 @@ this.name = name;</code></pre>
 <p>type FullName = Name & Surname;</p>
 <p>Interfaces can be merged and extended easily, making them suitable for defining and extending object shapes.</p>
 <p>Type aliases can define union, intersection, and other complex types, providing greater flexibility for more complex type definitions.</p>
-<p>interface Employee {</p>
-<p>work: (e) => string;</p>
-<p>}</p>
-<p>interface Manager {</p>
-<p>manage: () => string;</p>
-<p>}</p>
-<p>type Supervisor = Employee & Manager;</p>
-<p>let john: Supervisor = {</p>
-<p>work: (e) => {return "hello" + e},</p>
-<p>manage: () => "John is managing."</p>
-<p>};</p>
-<p>console.log(john.work('shashank'));   // Output: John is working.</p>
-<p>console.log(john.manage()); // Output: John is managing.</p>
+<pre><code>interface Employee {
+				work: (e) => string;
+			}
+			interface Manager {
+			manage: () => string;
+			}
+			type Supervisor = Employee & Manager;
+			let john: Supervisor = {
+				work: (e) => {return "hello" + e},
+				manage: () => "John is managing."
+			};
+			console.log(john.work('shashank'));   // Output: John is working.
+			console.log(john.manage()); // Output: John is managing.</code></pre>
 <h3><b>20. What are type aliases?</b></h3>
 <p>type alphanumeric = string | number;</p>
 <p>let value: alphanumeric = "";</p>
 <p>value = 10</p>
 <h3><b>21. Give example of generics in TypeScript?</b></h3>
 <p>TypeScript allow for creating reusable and flexible components without compromising on type safety.</p>
-<p>function identity<T>(arg: T):T {</p>
-<p>return arg;</p>
-<p>}</p>
-<p>let numIden = identity<number>(43);</p>
-<p>let numIden = identity<string>("Hello");</p>
+<pre><code>function identity<T>(arg: T):T {
+				return arg;
+			}
+			let numIden = identity<number>(43);
+			let numIden = identity<string>("Hello");</code></pre>
 <h3><b>22. What are modules in TypeScript</b></h3>
 <p>Modules in TypeScript provide a way to organize and encapsulate code, making it easier to develop, maintain, and test large applications.</p>
 <p>They allow you to split your code into separate files, keeping each file focused on a specific set of functionality or a single responsibility.</p>
@@ -247,20 +248,20 @@ this.name = name;</code></pre>
 <p>It serves as a bridge between the original TypeScript source code and the compiled JavaScript code, allowing</p>
 <p>developers to easily debug and trace back to the TypeScript code while working directly in a browser's developer console.</p>
 <h3><b>26. Find the output</b></h3>
-<p>typeof null          // "object" (not "null" for legacy reasons)</p>
-<p>typeof undefined     // "undefined"</p>
-<p>null === undefined   // false</p>
-<p>null  == undefined   // true</p>
-<p>null === null        // true</p>
-<p>null == null         // true</p>
-<p>!null                // true</p>
-<p>isNaN(1 + null)      // false</p>
-<p>isNaN(1 + undefined) // true</p>
+<pre><code>typeof null          // "object" (not "null" for legacy reasons)
+			typeof undefined     // "undefined"
+			null === undefined   // false
+			null  == undefined   // true
+			null === null        // true
+			null == null         // true
+			!null                // true
+			isNaN(1 + null)      // false
+			isNaN(1 + undefined) // true</code></pre>
 <h3><b>27. Questions</b></h3>
 <p>Remove duplicate from array;</p>
-<p>var arr = [5,5,6,8,9,8,6,2,3];</p>
-<p>var set = Array.from(new Set(arr));</p>
-<p>console.log(set.values());</p>
+<pre><code>var arr = [5,5,6,8,9,8,6,2,3];
+			var set = Array.from(new Set(arr));
+			console.log(set.values());</code></pre>
 <h3><b>28. Questions</b></h3>
 <p>Add values of array</p>
 <h3><b>29. Questions</b></h3>
