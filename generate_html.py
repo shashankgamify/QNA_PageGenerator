@@ -58,9 +58,16 @@ def generate_html(output_path, qa_content):
     <title>Q&A Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
+    <button id="theme-toggle">Toggle Dark/Light Mode</button>
     <h1>Questions and Answers</h1>
     {qa_content}
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        toggleButton.addEventListener('click', () => {{
+            document.body.classList.toggle('dark-mode');
+        }});
+    </script>
 </body>
 </html>
 """

@@ -6,7 +6,8 @@
     <title>Q&A Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
+    <button id="theme-toggle">Toggle Dark/Light Mode</button>
     <h1>Questions and Answers</h1>
     <h3><b>1. Interview Questions</b></h3>
 <h3><b>2. Data types</b></h3>
@@ -280,5 +281,11 @@ console.log(set.values());</code></pre>
 <h3><b>34. Arrow function</b></h3>
 <h3><b>35. Design Pattern</b></h3>
 
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
