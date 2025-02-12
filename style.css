@@ -4,7 +4,7 @@ body {
     color: black;
     font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
-    max-width: 900px; 
+    max-width: 1080px; 
     margin: auto; 
 }
 

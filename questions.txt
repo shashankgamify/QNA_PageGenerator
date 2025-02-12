@@ -16,22 +16,21 @@ Implicit Type Coercion in javascript.
 	
 What is variable hoisting in JS
 
-		console.log(myvar); // output undefined
-		var myvar = 10;
-		console.log(myvar); // output 10
+			console.log(myvar); // output undefined
+			var myvar = 10;
+			console.log(myvar); // output 10
 	
 What is type assertion in TypeScript
 	Type assertion is a mechanism which tells the compiler about the type of a variable
-	int value = <foo> bar;
-	int value = bar as foo;
+			int value = <foo> bar;
+			int value = bar as foo;
 	
 What are static typing and statically typed languages
 	Stating typing means we have to assing type while compile time like Java and C++
 	Dynamically typed means we get the value type run time like JS 
 	
 What is currying in JavaScript?
-	It is a technique in functional programming, that transforms the 
-	function of multiple arguments into several functions of a single argument in sequence
+	It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence
 			function add (a) {
 			  return function(b){
 				return a + b;
