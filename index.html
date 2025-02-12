@@ -11,79 +11,121 @@
     <h1>Questions and Answers</h1>
     <h3><b>1. Interview Questions</b></h3>
 <h3><b>2. Data types</b></h3>
-<p>String,	Number,	Bigint, Boolean, Undefined,	Null, Symbol, Object</p>
-<h3><b>3. Implicit Type Coercion in javascript.</b></h3>
+<p>Primitive Types: Basic types like number, string, boolean, null, undefined, and symbol.</p>
+<p>Object Types: Complex structures including arrays, classes, interfaces, and functions.</p>
+<p>Primitive types are the most basic data types in TypeScript. They represent simple, immutable values and are directly assigned.</p>
+<p>Object types are more complex structures that can contain multiple values and functions. They are mutable and can be manipulated after creation.</p>
+<h3><b>3. Diff bet == an ===</b></h3>
+<p>In JavaScript and TypeScript, == and === are comparison operators, but they differ in how they compare values.</p>
+<p>== (Equality)</p>
+<p>The == operator checks for equality between two values, but it performs type coercion if the values are of different types. Type coercion means that JavaScript tries to convert the values to the same type before making the comparison.</p>
+<pre><code>console.log(5 == "5");  // Output: true
+console.log(false == 0);  // Output: true
+console.log(null == undefined);  // Output: true
+</code></pre>
+<p>In the above examples, JavaScript converts the string "5" to the number 5, false to 0, and null to undefined before comparing.</p>
+<p>=== (Strict Equality)</p>
+<p>The === operator checks for equality between two values without performing type coercion. This means that both the value and the type must be the same for the comparison to return true.</p>
+<pre><code>console.log(5 === "5");  // Output: false
+console.log(false === 0);  // Output: false
+console.log(null === undefined);  // Output: false
+</code></pre>
+<p>When to Use Which</p>
+<p>Use === (strict equality) to avoid unexpected behavior due to type coercion. It ensures that both the value and the type are exactly the same.</p>
+<p>Use == (equality) if you specifically want to allow type coercion.</p>
+<p>In general, it's recommended to use === for most comparisons to prevent potential bugs caused by type coercion.</p>
+<h3><b>4. Implicit Type Coercion in javascript.</b></h3>
 <p>Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.</p>
 <p>String coercion</p>
 <p>String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.</p>
 <p>Example 1:</p>
 <pre><code>var x = 3;
 var y = "3";
-x + y // Returns "33</code></pre>
-<h3><b>4. What is variable hoisting in JS</b></h3>
+x + y // Returns "33
+</code></pre>
+<h3><b>5. Explicit Type Coercion</b></h3>
+<p>Explicit type coercion, or type casting, occurs when you manually convert a value from one type to another using built-in functions or constructors. This is a more controlled way of converting types because it avoids unexpected behaviors caused by implicit coercion.</p>
+<p>String to Number:</p>
+<pre><code>let str = "123";
+let num = Number(str); // Explicitly converts string to number
+console.log(num);  // Output: 123
+</code></pre>
+<p>Number to String:</p>
+<pre><code>let num = 123;
+let str = String(num); // Explicitly converts number to string
+console.log(str);  // Output: "123"
+</code></pre>
+<h3><b>6. What is variable hoisting in JS</b></h3>
 <pre><code>console.log(myvar); // output undefined
 var myvar = 10;
-console.log(myvar); // output 10</code></pre>
-<h3><b>5. What is type assertion in TypeScript</b></h3>
+console.log(myvar); // output 10
+</code></pre>
+<h3><b>7. What is type assertion in TypeScript</b></h3>
 <p>Type assertion is a mechanism which tells the compiler about the type of a variable</p>
 <pre><code>int value = <foo> bar;
-int value = bar as foo;</code></pre>
-<h3><b>6. What are static typing and statically typed languages</b></h3>
+int value = bar as foo;
+</code></pre>
+<h3><b>8. What are static typing and statically typed languages</b></h3>
 <p>Stating typing means we have to assing type while compile time like Java and C++</p>
 <p>Dynamically typed means we get the value type run time like JS</p>
-<h3><b>7. What is currying in JavaScript?</b></h3>
+<h3><b>9. What is currying in JavaScript?</b></h3>
 <p>It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence</p>
 <pre><code>function add (a) {
-return function(b){
-return a + b;
+  return function(b){
+	return a + b;
+  }
 }
-}
-add(3)(4);</code></pre>
-<h3><b>8. What is Closures in JavaScript?</b></h3>
+add(3)(4);
+</code></pre>
+<h3><b>10. What is Closures in JavaScript?</b></h3>
 <pre><code>var Person = function(pName){
-var name = pName;
-this.getName = function(){
-return name;
-}
+  var name = pName;
+  this.getName = function(){
+	return name;
+  }
 }
 var person = new Person("Neelesh");
-console.log(person.getName());</code></pre>
-<h3><b>9. What is Rest Parameter?</b></h3>
+console.log(person.getName());
+</code></pre>
+<h3><b>11. What is Rest Parameter?</b></h3>
 <p>The rest parameter allows a function to accept an indefinite number of arguments as an array.</p>
 <pre><code>function sum(...numbers) {
-return numbers.reduce((acc, curr) => acc + curr, 0);
+	return numbers.reduce((acc, curr) => acc + curr, 0);
 }
 console.log(sum(1, 2, 3)); // Output: 6
-console.log(sum(4, 5, 6, 7)); // Output: 22</code></pre>
+console.log(sum(4, 5, 6, 7)); // Output: 22
+</code></pre>
 <p>Rest Parameter (...): Used in function definitions to gather an indefinite number of arguments into an array.</p>
 <p>Spread Operator (...): Used to expand an array or object into individual elements or key-value pairs.</p>
-<h3><b>10. What is object destructuring in js?</b></h3>
+<h3><b>12. What is object destructuring in js?</b></h3>
 <p>Object destructuring in JavaScript is a syntax that allows you to extract properties from objects and bind them to variables.</p>
 <p>This feature provides a more concise and readable way to access and assign variables from objects,</p>
 <p>especially when dealing with complex structures or nested objects</p>
 <pre><code>const person = {
-name: 'John',
-age: 30,
-city: 'New York'
+	name: 'John',
+	age: 30,
+	city: 'New York'
 };
 const { name, age, city } = person;
 console.log(name); // Output: John
 console.log(age);  // Output: 30
-console.log(city); // Output: New York</code></pre>
-<h3><b>11. What is weakmap in javascript</b></h3>
+console.log(city); // Output: New York
+</code></pre>
+<h3><b>13. What is weakmap in javascript</b></h3>
 <p>WeakMap is a collection of key-value pairs where the keys are objects and the values can be arbitrary values.</p>
 <pre><code>class SomeClass {
-private static _privateData = new WeakMap<SomeClass, any>();
-constructor() {
-SomeClass._privateData.set(this, { hidden: "secret" });
-}
-getSecret() {
-return SomeClass._privateData.get(this).hidden;
-}
+	private static _privateData = new WeakMap<SomeClass, any>();
+	constructor() {
+		SomeClass._privateData.set(this, { hidden: "secret" });
+	}
+	getSecret() {
+		return SomeClass._privateData.get(this).hidden;
+	}
 }
 let instance = new SomeClass();
-console.log(instance.getSecret());</code></pre>
-<h3><b>12. What is set in JavaScript?</b></h3>
+console.log(instance.getSecret());
+</code></pre>
+<h3><b>14. What is set in JavaScript?</b></h3>
 <p>A Set is a collection of values where each value must be unique. It can hold any type of values, whether primitive or object references.</p>
 <p>Set maintains the insertion order of the elements and provides various methods to manipulate and iterate over its elements.</p>
 <pre><code>let mySet = new Set();
@@ -94,9 +136,10 @@ mySet.add('some text');
 mySet.add({ a: 1, b: 2 });
 console.log(mySet.size); // Output: 4
 mySet.forEach(value => {
-console.log(value);
-});</code></pre>
-<h3><b>13. What is weakset?</b></h3>
+	console.log(value);
+});
+</code></pre>
+<h3><b>15. What is weakset?</b></h3>
 <p>A WeakSet is a collection of objects where the objects are held weakly, meaning that</p>
 <p>if there are no other references to an object stored in the WeakSet, the object can be garbage collected.</p>
 <p>let weakSet = new WeakSet();</p>
@@ -107,7 +150,8 @@ weakSet.add(obj2);
 console.log(weakSet.has(obj1)); // Output: true
 obj1 = null; // obj1 is now eligible for garbage collection
 // After garbage collection, obj1 will be removed from the WeakSet
-console.log(weakSet.has(obj1)); // Output: false (after garbage collection)</code></pre>
+console.log(weakSet.has(obj1)); // Output: false (after garbage collection)
+</code></pre>
 <p>Set:</p>
 <p>Stores unique values of any type.</p>
 <p>Maintains insertion order.</p>
@@ -116,86 +160,91 @@ console.log(weakSet.has(obj1)); // Output: false (after garbage collection)</cod
 <p>Stores unique object references only.</p>
 <p>Holds weak references, allowing garbage collection of unreferenced objects.</p>
 <p>Not iterable and does not provide methods to list its elements.</p>
-<h3><b>14. What is parameter destructuring?</b></h3>
+<h3><b>16. What is parameter destructuring?</b></h3>
 <p>Parameter destructing allows a function to unpack the object provided as an argument into one or more local variables.</p>
 <pre><code>function multiply({ a, b, c }: { a: number; b: number; c: number }) {
-console.log(a * b * c);
+	console.log(a * b * c);
 }
-multiply({ a: 1, b: 2, c: 3 });</code></pre>
-<h3><b>15. What is meant by type inference?</b></h3>
+multiply({ a: 1, b: 2, c: 3 });
+</code></pre>
+<h3><b>17. What is meant by type inference?</b></h3>
 <p>TypeScript can infer the type of a variable when you don’t provide an explicit type.</p>
-<h3><b>16. What is meant by contextual typing?</b></h3>
+<h3><b>18. What is meant by contextual typing?</b></h3>
 <p>When the TypeScript compiler uses the location (or context) of a variable to infer its type, it’s called contextual typing.</p>
 <p>This allows it to infer the type of the e parameter, which does have a button property but not a property named foo.</p>
 <pre><code>window.onmousedown = function (e) {
-console.log(e.button); //<- OK
-console.log(e.foo); //<- Error!
-};</code></pre>
-<h3><b>17. TypeScript - Abstract Class</b></h3>
+	console.log(e.button); //<- OK
+	console.log(e.foo); //<- Error!
+};
+</code></pre>
+<h3><b>19. TypeScript - Abstract Class</b></h3>
 <p>Define an abstract class in Typescript using the abstract keyword. Abstract classes are mainly for inheritance where other</p>
 <p>classes may derive from them. We cannot create an instance of an abstract class.</p>
 <p>An abstract class typically includes one or more abstract methods or property declarations.</p>
 <p>The class which extends the abstract class must define all the abstract methods.</p>
 <p>Example 1:</p>
 <pre><code>abstract class Person {
-name: string;
-constructor(name: string) {
-this.name = name;
-}
-display(): void{
-console.log(this.name);
-}
-abstract find(string): Person;
+	name: string;
+	constructor(name: string) {
+		this.name = name;
+	}
+	display(): void{
+		console.log(this.name);
+	}
+	abstract find(string): Person;
 }
 class Employee extends Person {
-empCode: number;
-constructor(name: string, code: number) {
-super(name); // must call super()
-this.empCode = code;
-}
-find(name:string): Person {
-// execute AJAX request to find an employee from a db
-return new Employee(name, 1);
-}
+	empCode: number;
+	constructor(name: string, code: number) {
+		super(name); // must call super()
+		this.empCode = code;
+	}
+	find(name:string): Person {
+		// execute AJAX request to find an employee from a db
+		return new Employee(name, 1);
+	}
 }
 let emp: Person = new Employee("James", 100);
 emp.display(); //James
-let emp2: Person = emp.find('Steve');</code></pre>
+let emp2: Person = emp.find('Steve');
+</code></pre>
 <p>Example 2:</p>
 <pre><code>abstract class Person {
-abstract name: string;
-display(): void{
-console.log(this.name);
-}
+	abstract name: string;
+	display(): void{
+		console.log(this.name);
+	}
 }
 class Employee extends Person {
-name: string;
-empCode: number;
-constructor(name: string, code: number) {
-super(); // must call super()
-this.empCode = code;
-this.name = name;
-}
+	name: string;
+	empCode: number;
+	constructor(name: string, code: number) {
+		super(); // must call super()
+		this.empCode = code;
+		this.name = name;
+	}
 }
 let emp: Person = new Employee("James", 100);
-emp.display(); //James</code></pre>
-<h3><b>18. what is interface in typescript</b></h3>
+emp.display(); //James
+</code></pre>
+<h3><b>20. what is interface in typescript</b></h3>
 <p>In TypeScript, an interface is a way to define the structure of an object.</p>
 <p>It specifies the types of properties and methods that an object can have,</p>
 <pre><code>interface Person {
-name: string;
-age: number;
-address?: string; // Optional property
+	name: string;
+	age: number;
+	address?: string; // Optional property
 }
 function greet(person: Person) {
-console.log(`Hello, ${person.name}`);
+	console.log(`Hello, ${person.name}`);
 }
 const john: Person = {
-name: 'John',
-age: 30
+	name: 'John',
+	age: 30
 };
-greet(john); // Output: Hello, John</code></pre>
-<h3><b>19. What are diffrence bet type and interfaces</b></h3>
+greet(john); // Output: Hello, John
+</code></pre>
+<h3><b>21. What are diffrence bet type and interfaces</b></h3>
 <p>type SuccessResponse = { status: "success"; data: any };</p>
 <p>type ErrorResponse = { status: "error"; message: string };</p>
 <p>type Response = SuccessResponse | ErrorResponse;</p>
@@ -205,49 +254,51 @@ greet(john); // Output: Hello, John</code></pre>
 <p>Interfaces can be merged and extended easily, making them suitable for defining and extending object shapes.</p>
 <p>Type aliases can define union, intersection, and other complex types, providing greater flexibility for more complex type definitions.</p>
 <pre><code>interface Employee {
-work: (e) => string;
+	work: (e) => string;
 }
 interface Manager {
 manage: () => string;
 }
 type Supervisor = Employee & Manager;
 let john: Supervisor = {
-work: (e) => {return "hello" + e},
-manage: () => "John is managing."
+	work: (e) => {return "hello" + e},
+	manage: () => "John is managing."
 };
 console.log(john.work('shashank'));   // Output: John is working.
-console.log(john.manage()); // Output: John is managing.</code></pre>
-<h3><b>20. What are type aliases?</b></h3>
+console.log(john.manage()); // Output: John is managing.
+</code></pre>
+<h3><b>22. What are type aliases?</b></h3>
 <p>type alphanumeric = string | number;</p>
 <p>let value: alphanumeric = "";</p>
 <p>value = 10</p>
-<h3><b>21. Give example of generics in TypeScript?</b></h3>
+<h3><b>23. Give example of generics in TypeScript?</b></h3>
 <p>TypeScript allow for creating reusable and flexible components without compromising on type safety.</p>
 <pre><code>function identity<T>(arg: T):T {
-return arg;
+	return arg;
 }
 let numIden = identity<number>(43);
-let numIden = identity<string>("Hello");</code></pre>
-<h3><b>22. What are modules in TypeScript</b></h3>
+let numIden = identity<string>("Hello");
+</code></pre>
+<h3><b>24. What are modules in TypeScript</b></h3>
 <p>Modules in TypeScript provide a way to organize and encapsulate code, making it easier to develop, maintain, and test large applications.</p>
 <p>They allow you to split your code into separate files, keeping each file focused on a specific set of functionality or a single responsibility.</p>
-<h3><b>23. What are diff bet namespaces and Modules</b></h3>
+<h3><b>25. What are diff bet namespaces and Modules</b></h3>
 <p>Modules:</p>
 <p>Best used for encapsulating and exporting functionality across different files and projects.</p>
 <p>It aligns with modern JavaScript standards (ES6 modules).</p>
 <p>Namespaces:</p>
 <p>Useful for organizing code within a file or a group of files,</p>
 <p>especially in legacy codebases or scenarios without module loaders.</p>
-<h3><b>24. Explain Decorators in TypeScript.</b></h3>
+<h3><b>26. Explain Decorators in TypeScript.</b></h3>
 <p>Decorators in TypeScript are a special kind of declarative syntax used to add metadata or</p>
 <p>modify the behavior of classes, methods, properties, or parameters.</p>
 <p>They provide a convenient way to apply reusable logic or behavior across multiple</p>
 <p>parts of your code without having to manually modify each target element</p>
-<h3><b>25. Explain TypeScript Map file?</b></h3>
+<h3><b>27. Explain TypeScript Map file?</b></h3>
 <p>Script Map file, also known as a Source Map, is a JSON file generated during the compilation process of TypeScript to JavaScript.</p>
 <p>It serves as a bridge between the original TypeScript source code and the compiled JavaScript code, allowing</p>
 <p>developers to easily debug and trace back to the TypeScript code while working directly in a browser's developer console.</p>
-<h3><b>26. Find the output</b></h3>
+<h3><b>28. Find the output</b></h3>
 <pre><code>typeof null          // "object" (not "null" for legacy reasons)
 typeof undefined     // "undefined"
 null === undefined   // false
@@ -256,29 +307,81 @@ null === null        // true
 null == null         // true
 !null                // true
 isNaN(1 + null)      // false
-isNaN(1 + undefined) // true</code></pre>
-<h3><b>27. Questions</b></h3>
+isNaN(1 + undefined) // true
+</code></pre>
+<h3><b>29. Questions</b></h3>
 <p>Remove duplicate from array;</p>
 <pre><code>var arr = [5,5,6,8,9,8,6,2,3];
 var set = Array.from(new Set(arr));
-console.log(set.values());</code></pre>
-<h3><b>28. Questions</b></h3>
+console.log(set.values());
+</code></pre>
+<h3><b>30. Questions</b></h3>
 <p>Add values of array</p>
-<h3><b>29. Questions</b></h3>
+<h3><b>31. Questions</b></h3>
 <p>async and await</p>
 <p>Promises</p>
 <p>OOps</p>
-<h3><b>30. Intheritance</b></h3>
-<h3><b>31. Polymorphism</b></h3>
+<h3><b>32. Intheritance</b></h3>
+<h3><b>33. Polymorphism</b></h3>
 <p>When you override inherited methods or properties, that's polymorphism.</p>
-<h3><b>32. Abstraction</b></h3>
+<h3><b>34. Abstraction</b></h3>
 <p>Abstraction is the process of hiding implementation details and only showing the necessary information to the user</p>
-<h3><b>33. Encapsulation</b></h3>
+<h3><b>35. Encapsulation</b></h3>
 <p>public: This is the default visibility of every class property. A public property is accessible outside the class.</p>
 <p>private: A property prefixed with the private keyword can’t be accessed anywhere outside the class and cannot be inherited by a subclass.</p>
 <p>protected: The protected access modifier is very similar to the private access</p>
-<h3><b>34. Arrow function</b></h3>
-<h3><b>35. Design Pattern</b></h3>
+<h3><b>36. Arrow function</b></h3>
+<h3><b>37. Design Pattern</b></h3>
+<h3><b>38. Advanced TypeScript Questions</b></h3>
+<p>Conditional Types:</p>
+<pre><code>type Foo<T> = T extends { a: infer U, b: infer U } ? U : never;
+type T1 = Foo<{ a: string, b: string }>; // What is the type of T1?
+type T2 = Foo<{ a: string, b: number }>; // What is the type of T2?
+</code></pre>
+<p>Mapped Types:</p>
+<pre><code>type ReadOnly<T> = {
+	readonly [P in keyof T]: T[P];
+};
+type Original = { name: string; age: number };
+type ReadOnlyOriginal = ReadOnly<Original>;
+// Can you modify the properties of ReadOnlyOriginal?
+</code></pre>
+<p>Union and Intersection Types:</p>
+<pre><code>type A = { name: string };
+type B = { age: number };
+type C = A & B; // What is the type of C?
+type D = A | B; // What is the type of D?
+</code></pre>
+<p>Type Assertions and Guards:</p>
+<pre><code>function isString(x: any): x is string {
+	return typeof x === 'string';
+}
+function processValue(value: string | number) {
+	if (isString(value)) {
+		// What operations can you safely perform on value here?
+	} else {
+		// What operations can you safely perform on value here?
+	}
+}
+</code></pre>
+<p>Generics and Constraints:</p>
+<pre><code>function mergeObjects<T extends object, U extends object>(obj1: T, obj2: U): T & U {
+	return { ...obj1, ...obj2 };
+}
+const merged = mergeObjects({ name: 'John' }, { age: 30 });
+// What is the type of merged?
+// What constraints are placed on T and U?
+</code></pre>
+<p>Utility Types:</p>
+<pre><code>interface Person {
+	name: string;
+	age: number;
+	location?: string;
+}
+type PartialPerson = Partial<Person>;
+type RequiredPerson = Required<Person>;
+// What are the differences between PartialPerson and RequiredPerson?
+</code></pre>
 
     <script>
         const toggleButton = document.getElementById('theme-toggle');
