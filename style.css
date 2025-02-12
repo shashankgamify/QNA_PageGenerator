@@ -1,0 +1,17 @@
+body { 
+    font-family: Arial, sans-serif; 
+    max-width: 900px; 
+    margin: auto; 
+}
+h3 { 
+    margin-bottom: 5px; 
+}
+p { 
+    margin-left: 20px; 
+    margin-top: 0; 
+}
+pre { 
+    background: #f4f4f4; 
+    padding: 10px; 
+    margin-left: 20px;
+}

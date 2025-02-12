@@ -1,0 +1,384 @@
+Interview Questions
+
+Data types
+	String,	Number,	Bigint, Boolean, Undefined,	Null, Symbol, Object
+	
+Implicit Type Coercion in javascript.
+	Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+
+	String coercion
+	String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.
+
+	Example 1:
+
+			var x = 3;
+			var y = "3";
+			x + y // Returns "33
+	
+What is variable hoisting in JS
+
+		console.log(myvar); // output undefined
+		var myvar = 10;
+		console.log(myvar); // output 10
+	
+What is type assertion in TypeScript
+	Type assertion is a mechanism which tells the compiler about the type of a variable
+	int value = <foo> bar;
+	int value = bar as foo;
+	
+What are static typing and statically typed languages
+	Stating typing means we have to assing type while compile time like Java and C++
+	Dynamically typed means we get the value type run time like JS 
+	
+What is currying in JavaScript?
+	It is a technique in functional programming, that transforms the 
+	function of multiple arguments into several functions of a single argument in sequence
+		function add (a) {
+		  return function(b){
+			return a + b;
+		  }
+		}
+		add(3)(4);
+
+
+What is Closures in JavaScript?
+		var Person = function(pName){
+		  var name = pName;
+		  this.getName = function(){
+			return name;
+		  }
+		}
+		var person = new Person("Neelesh");
+		console.log(person.getName());
+
+
+What is Rest Parameter?
+	The rest parameter allows a function to accept an indefinite number of arguments as an array. 
+	function sum(...numbers) {
+		return numbers.reduce((acc, curr) => acc + curr, 0);
+	}
+	console.log(sum(1, 2, 3)); // Output: 6
+	console.log(sum(4, 5, 6, 7)); // Output: 22
+	Rest Parameter (...): Used in function definitions to gather an indefinite number of arguments into an array.
+	Spread Operator (...): Used to expand an array or object into individual elements or key-value pairs.
+
+What is object destructuring in js?
+
+	Object destructuring in JavaScript is a syntax that allows you to extract properties from objects and bind them to variables. 
+	This feature provides a more concise and readable way to access and assign variables from objects,
+	especially when dealing with complex structures or nested objects
+	const person = {
+		name: 'John',
+		age: 30,
+		city: 'New York'
+	};
+
+	const { name, age, city } = person;
+	console.log(name); // Output: John
+	console.log(age);  // Output: 30
+	console.log(city); // Output: New York
+
+What is weakmap in javascript
+	WeakMap is a collection of key-value pairs where the keys are objects and the values can be arbitrary values.
+	class SomeClass {
+		private static _privateData = new WeakMap<SomeClass, any>();
+
+		constructor() {
+			SomeClass._privateData.set(this, { hidden: "secret" });
+		}
+
+		getSecret() {
+			return SomeClass._privateData.get(this).hidden;
+		}
+	}
+
+	let instance = new SomeClass();
+	console.log(instance.getSecret());
+
+
+What is set in JavaScript?
+
+	A Set is a collection of values where each value must be unique. It can hold any type of values, whether primitive or object references. 
+	Set maintains the insertion order of the elements and provides various methods to manipulate and iterate over its elements.
+
+	let mySet = new Set();
+
+	mySet.add(1);
+	mySet.add(5);
+	mySet.add(5); // Duplicate value, ignored
+	mySet.add('some text');
+	mySet.add({ a: 1, b: 2 });
+
+	console.log(mySet.size); // Output: 4
+
+	mySet.forEach(value => {
+		console.log(value);
+	});
+
+
+What is weakset?
+
+	A WeakSet is a collection of objects where the objects are held weakly, meaning that 
+	if there are no other references to an object stored in the WeakSet, the object can be garbage collected.
+	let weakSet = new WeakSet();
+
+	let obj1 = { a: 1 };
+	let obj2 = { b: 2 };
+
+	weakSet.add(obj1);
+	weakSet.add(obj2);
+
+	console.log(weakSet.has(obj1)); // Output: true
+
+	obj1 = null; // obj1 is now eligible for garbage collection
+
+	// After garbage collection, obj1 will be removed from the WeakSet
+	console.log(weakSet.has(obj1)); // Output: false (after garbage collection)
+
+
+	Set:
+
+	Stores unique values of any type.
+	Maintains insertion order.
+	Is iterable and provides methods like add, delete, has, and forEach.
+
+	WeakSet:
+
+	Stores unique object references only.
+	Holds weak references, allowing garbage collection of unreferenced objects.
+	Not iterable and does not provide methods to list its elements.
+
+What is parameter destructuring?
+	Parameter destructing allows a function to unpack the object provided as an argument into one or more local variables.
+
+	function multiply({ a, b, c }: { a: number; b: number; c: number }) {
+	console.log(a * b * c);
+	}
+
+	multiply({ a: 1, b: 2, c: 3 });
+
+What is meant by type inference?
+	TypeScript can infer the type of a variable when you don’t provide an explicit type.
+
+
+What is meant by contextual typing?
+	When the TypeScript compiler uses the location (or context) of a variable to infer its type, it’s called contextual typing.
+	This allows it to infer the type of the e parameter, which does have a button property but not a property named foo.
+	window.onmousedown = function (e) {
+		console.log(e.button); //<- OK	
+		console.log(e.foo); //<- Error!
+	};
+
+TypeScript - Abstract Class
+	Define an abstract class in Typescript using the abstract keyword. Abstract classes are mainly for inheritance where other 
+	classes may derive from them. We cannot create an instance of an abstract class.
+
+	An abstract class typically includes one or more abstract methods or property declarations.
+	The class which extends the abstract class must define all the abstract methods.
+
+	abstract class Person {
+		name: string;
+		
+		constructor(name: string) {
+			this.name = name;
+		}
+
+		display(): void{
+			console.log(this.name);
+		}
+
+		abstract find(string): Person;
+	}
+
+	class Employee extends Person { 
+		empCode: number;
+		
+		constructor(name: string, code: number) { 
+			super(name); // must call super()
+			this.empCode = code;
+		}
+
+		find(name:string): Person { 
+			// execute AJAX request to find an employee from a db
+			return new Employee(name, 1);
+		}
+	}
+
+	let emp: Person = new Employee("James", 100);
+	emp.display(); //James
+
+	let emp2: Person = emp.find('Steve');
+
+	______________________/////////////
+
+
+	abstract class Person {
+		abstract name: string;
+
+		display(): void{
+			console.log(this.name);
+		}
+	}
+
+	class Employee extends Person { 
+		name: string;
+		empCode: number;
+		
+		constructor(name: string, code: number) { 
+			super(); // must call super()
+			
+			this.empCode = code;
+			this.name = name;
+		}
+	}
+
+	let emp: Person = new Employee("James", 100);
+	emp.display(); //James
+
+what is interface in typescript
+	In TypeScript, an interface is a way to define the structure of an object. 
+	It specifies the types of properties and methods that an object can have, 
+	interface Person {
+		name: string;
+		age: number;
+		address?: string; // Optional property
+	}
+
+	function greet(person: Person) {
+		console.log(`Hello, ${person.name}`);
+	}
+
+	const john: Person = {
+		name: 'John',
+		age: 30
+	};
+
+	greet(john); // Output: Hello, John
+
+
+
+What are diffrence bet type and interfaces
+
+	type SuccessResponse = { status: "success"; data: any };
+	type ErrorResponse = { status: "error"; message: string };
+	type Response = SuccessResponse | ErrorResponse;
+
+	type Name = { firstName: string };
+	type Surname = { lastName: string };
+	type FullName = Name & Surname;
+
+
+	Interfaces can be merged and extended easily, making them suitable for defining and extending object shapes.
+	Type aliases can define union, intersection, and other complex types, providing greater flexibility for more complex type definitions.
+
+	interface Employee {
+	work: (e) => string;
+	}
+
+	interface Manager {
+	manage: () => string;
+	}
+
+	type Supervisor = Employee & Manager;
+
+	let john: Supervisor = {
+		work: (e) => {return "hello" + e},
+		manage: () => "John is managing."
+	};
+
+	console.log(john.work('shashank'));   // Output: John is working.
+	console.log(john.manage()); // Output: John is managing.
+
+
+What are type aliases?
+	type alphanumeric = string | number;
+	let value: alphanumeric = "";
+	value = 10
+
+
+
+Give example of generics in TypeScript?
+	TypeScript allow for creating reusable and flexible components without compromising on type safety.
+	function identity<T>(arg: T):T {
+		return arg;
+	}
+	let numIden = identity<number>(43);
+	let numIden = identity<string>("Hello");
+
+
+What are modules in TypeScript
+	Modules in TypeScript provide a way to organize and encapsulate code, making it easier to develop, maintain, and test large applications. 
+	They allow you to split your code into separate files, keeping each file focused on a specific set of functionality or a single responsibility.
+
+
+What are diff bet namespaces and Modules 
+
+	Modules:
+	Best used for encapsulating and exporting functionality across different files and projects. 
+	It aligns with modern JavaScript standards (ES6 modules).
+
+	Namespaces: 
+	Useful for organizing code within a file or a group of files, 
+	especially in legacy codebases or scenarios without module loaders.
+
+
+Explain Decorators in TypeScript.
+	Decorators in TypeScript are a special kind of declarative syntax used to add metadata or 
+	modify the behavior of classes, methods, properties, or parameters. 
+
+	They provide a convenient way to apply reusable logic or behavior across multiple 
+	parts of your code without having to manually modify each target element
+
+
+Explain TypeScript Map file?
+	Script Map file, also known as a Source Map, is a JSON file generated during the compilation process of TypeScript to JavaScript.
+
+	It serves as a bridge between the original TypeScript source code and the compiled JavaScript code, allowing
+	developers to easily debug and trace back to the TypeScript code while working directly in a browser's developer console.
+
+Find the output
+	typeof null          // "object" (not "null" for legacy reasons)
+	typeof undefined     // "undefined"
+	null === undefined   // false
+	null  == undefined   // true
+	null === null        // true
+	null == null         // true
+	!null                // true
+	isNaN(1 + null)      // false
+	isNaN(1 + undefined) // true
+
+
+
+Questions 
+	Remove duplicate from array;
+
+	var arr = [5,5,6,8,9,8,6,2,3];
+	var set = Array.from(new Set(arr));
+	console.log(set.values());
+
+
+Questions
+	Add values of array 
+
+Questions
+	async and await
+	Promises
+	OOps
+
+
+Intheritance
+
+Polymorphism
+	When you override inherited methods or properties, that's polymorphism.
+
+Abstraction
+	Abstraction is the process of hiding implementation details and only showing the necessary information to the user
+
+Encapsulation
+	public: This is the default visibility of every class property. A public property is accessible outside the class.
+	private: A property prefixed with the private keyword can’t be accessed anywhere outside the class and cannot be inherited by a subclass.
+	protected: The protected access modifier is very similar to the private access
+
+
+Arrow function
+Design Pattern
