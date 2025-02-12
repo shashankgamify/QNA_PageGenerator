@@ -6,6 +6,37 @@ Data types
 	Primitive types are the most basic data types in TypeScript. They represent simple, immutable values and are directly assigned.
 	Object types are more complex structures that can contain multiple values and functions. They are mutable and can be manipulated after creation.
 
+Union Types and Intersection types
+	Union: A union type represents a value that can be one of several types. You can create a union type by using the pipe (|) symbol between the types.
+			type MyType = string | number;
+			let value: MyType;
+			value = "Hello"; // Valid
+			value = 42;      // Valid
+			value = true;    // Error: Type 'boolean' is not assignable to type 'string | number'.
+	Intersection: An intersection type combines multiple types into one. A value of an intersection type must satisfy all the combined types. You can create an intersection type by using the ampersand (&) symbol between the types.
+			type A = { name: string };
+			type B = { age: number };
+			type C = A & B;
+			let person: C = {
+				name: "Alice",
+				age: 30
+			};
+
+	Example: Intersection
+			interface Nameable {
+				name: string;
+			}
+			interface Ageable {
+				age: number;
+			}
+			type Person = Nameable & Ageable;
+			const person: Person = {
+				name: "Bob",
+				age: 25
+			};
+
+
+
 Diff bet == an ===
 	In JavaScript and TypeScript, == and === are comparison operators, but they differ in how they compare values.
 	== (Equality)
@@ -285,16 +316,79 @@ what is interface in typescript
 
 			greet(john); // Output: Hello, John
 
+What is application of type and interface
+	In TypeScript, both type aliases and interfaces are used to define custom types. They have some similarities but also key differences and best use cases. Here’s an overview of their applications and when to use each:
+	{ Type Aliases }
+	A type alias is used to create a new name for a type. It can be used for primitive types, union types, intersection types, and more. Type aliases are flexible and versatile.
+	Union and Intersection Types:
+			type ID = string | number;
+			type NameOrAge = { name: string } & { age: number };
+
+	Primitive Types:
+			type StringAlias = string;
+	Function Types:
+			type Callback = (error: Error | null, response: string) => void;
+	Utility Types (using mapped types):
+			type ReadOnly<T> = {
+				readonly [P in keyof T]: T[P];
+			};
+	{ Interface }
+	An interface is used to define the structure of an object. It is more suited for describing the shape of objects, including properties and methods. Interfaces can be extended and implemented by classes.
+	Object Types:
+			interface Person {
+				name: string;
+				age: number;
+				location?: string;
+			}
+	Extending Interfaces:
+			interface Employee extends Person {
+				employeeId: number;
+			}
+			
+	Implementing Classes:
+			class Developer implements Person {
+				name: string;
+				age: number;
+				location?: string;
+			
+				constructor(name: string, age: number, location?: string) {
+					this.name = name;
+					this.age = age;
+					this.location = location;
+				}
+			}
+
+		Describing Function Signatures:
+
+			interface SearchFunction {
+				(source: string, subString: string): boolean;
+			}
+			let mySearch: SearchFunction;
+			mySearch = function (src, sub) {
+				return src.includes(sub);
+			};
+
+	Key Differences and Best Practices
+	Extensibility:
+		Interfaces are more extensible. You can easily extend an existing interface by declaring it again.
+		Type aliases are not as easily extendable. To extend a type alias, you need to create a new type.
+	Union and Intersection Types:
+		Use type aliases when you need to create union or intersection types, as interfaces do not support these directly.
+	Object-Oriented Design:
+		Use interfaces when you need to describe the shape of objects or define contracts for classes to implement.
+	Complex Types:
+		Use type aliases for more complex type definitions, such as unions, intersections, and mapped types.
+
 
 What are diffrence bet type and interfaces
 
-	type SuccessResponse = { status: "success"; data: any };
-	type ErrorResponse = { status: "error"; message: string };
-	type Response = SuccessResponse | ErrorResponse;
+			type SuccessResponse = { status: "success"; data: any };
+			type ErrorResponse = { status: "error"; message: string };
+			type Response = SuccessResponse | ErrorResponse;
 
-	type Name = { firstName: string };
-	type Surname = { lastName: string };
-	type FullName = Name & Surname;
+			type Name = { firstName: string };
+			type Surname = { lastName: string };
+			type FullName = Name & Surname;
 
 
 	Interfaces can be merged and extended easily, making them suitable for defining and extending object shapes.
@@ -413,10 +507,12 @@ Arrow function
 Design Pattern
 
 Advanced TypeScript Questions
+
 	Conditional Types:
 			type Foo<T> = T extends { a: infer U, b: infer U } ? U : never;
 			type T1 = Foo<{ a: string, b: string }>; // What is the type of T1?
 			type T2 = Foo<{ a: string, b: number }>; // What is the type of T2?
+
 	Mapped Types:
 			type ReadOnly<T> = {
 				readonly [P in keyof T]: T[P];
@@ -424,11 +520,13 @@ Advanced TypeScript Questions
 			type Original = { name: string; age: number };
 			type ReadOnlyOriginal = ReadOnly<Original>;
 			// Can you modify the properties of ReadOnlyOriginal?
+
 	Union and Intersection Types:
 			type A = { name: string };
 			type B = { age: number };
 			type C = A & B; // What is the type of C?
 			type D = A | B; // What is the type of D?
+
 	Type Assertions and Guards:
 			function isString(x: any): x is string {
 				return typeof x === 'string';
@@ -440,6 +538,7 @@ Advanced TypeScript Questions
 					// What operations can you safely perform on value here?
 				}
 			}
+
 	Generics and Constraints:
 			function mergeObjects<T extends object, U extends object>(obj1: T, obj2: U): T & U {
 				return { ...obj1, ...obj2 };
@@ -447,6 +546,7 @@ Advanced TypeScript Questions
 			const merged = mergeObjects({ name: 'John' }, { age: 30 });
 			// What is the type of merged?
 			// What constraints are placed on T and U?
+
 	Utility Types:
 			interface Person {
 				name: string;
@@ -457,4 +557,41 @@ Advanced TypeScript Questions
 			type RequiredPerson = Required<Person>;
 			// What are the differences between PartialPerson and RequiredPerson?
 
+	Basic Mapped Types
+	Here's a simple example of a mapped type that makes all properties in a type readonly:
+			type ReadOnly<T> = {
+				readonly [P in keyof T]: T[P];
+			};
+			interface Person {
+				name: string;
+				age: number;
+			}
+			type ReadOnlyPerson = ReadOnly<Person>;
+	In this example:
+	ReadOnly<T> is a mapped type that takes a type T.
+	[P in keyof T] iterates over each property P in the type T.
+	readonly makes each property P in the resulting type readonly.
+	T[P] keeps the original type of each property.
+	The resulting ReadOnlyPerson type will be:
+			interface ReadOnlyPerson {
+				readonly name: string;
+				readonly age: number;
+			}
 
+	Built-in Utility Types
+	TypeScript provides several built-in utility types that use mapped types:
+	Partial<T>: Makes all properties in T optional.
+	Required<T>: Makes all properties in T required.
+	Readonly<T>: Makes all properties in T readonly.
+	Pick<T, K>: Creates a type with a subset of properties K from type T.
+	Omit<T, K>: Creates a type by omitting properties K from type T.
+			interface Person {
+				name: string;
+				age: number;
+				location?: string;
+			}
+			type PartialPerson = Partial<Person>;
+			type RequiredPerson = Required<Person>;
+			type ReadOnlyPerson = Readonly<Person>;
+			type NameAndAge = Pick<Person, 'name' | 'age'>;
+			type PersonWithoutLocation = Omit<Person, 'location'>;
