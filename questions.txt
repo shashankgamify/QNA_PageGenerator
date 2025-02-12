@@ -13,7 +13,8 @@ Union Types and Intersection types
 			value = "Hello"; // Valid
 			value = 42;      // Valid
 			value = true;    // Error: Type 'boolean' is not assignable to type 'string | number'.
-	Intersection: An intersection type combines multiple types into one. A value of an intersection type must satisfy all the combined types. You can create an intersection type by using the ampersand (&) symbol between the types.
+	Intersection: An intersection type combines multiple types into one. A value of an intersection type must satisfy all the combined types. 
+	You can create an intersection type by using the ampersand (&) symbol between the types.
 			type A = { name: string };
 			type B = { age: number };
 			type C = A & B;
@@ -40,14 +41,16 @@ Union Types and Intersection types
 Diff bet == an ===
 	In JavaScript and TypeScript, == and === are comparison operators, but they differ in how they compare values.
 	== (Equality)
-	The == operator checks for equality between two values, but it performs type coercion if the values are of different types. Type coercion means that JavaScript tries to convert the values to the same type before making the comparison.	
+	The == operator checks for equality between two values, but it performs type coercion if the values are of different types. 
+	Type coercion means that JavaScript tries to convert the values to the same type before making the comparison.	
 			console.log(5 == "5");  // Output: true
 			console.log(false == 0);  // Output: true
 			console.log(null == undefined);  // Output: true
 
 	In the above examples, JavaScript converts the string "5" to the number 5, false to 0, and null to undefined before comparing.
 	=== (Strict Equality)
-	The === operator checks for equality between two values without performing type coercion. This means that both the value and the type must be the same for the comparison to return true.
+	The === operator checks for equality between two values without performing type coercion. This means that both the value and the type 
+	must be the same for the comparison to return true.
 			console.log(5 === "5");  // Output: false
 			console.log(false === 0);  // Output: false
 			console.log(null === undefined);  // Output: false
@@ -59,7 +62,8 @@ Diff bet == an ===
 
 	
 Implicit Type Coercion in javascript.
-	Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+	Implicit type coercion in javascript is the automatic conversion of value from one data type to another. 
+	It takes place when the operands of an expression are of different data types.
 	String coercion
 	String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.
 	Example 1:
@@ -68,7 +72,8 @@ Implicit Type Coercion in javascript.
 			x + y // Returns "33
 
 Explicit Type Coercion
-	Explicit type coercion, or type casting, occurs when you manually convert a value from one type to another using built-in functions or constructors. This is a more controlled way of converting types because it avoids unexpected behaviors caused by implicit coercion.			
+	Explicit type coercion, or type casting, occurs when you manually convert a value from one type to another using built-in functions or constructors. 
+	This is a more controlled way of converting types because it avoids unexpected behaviors caused by implicit coercion.			
 		String to Number:
 			let str = "123";
 			let num = Number(str); // Explicitly converts string to number
@@ -135,7 +140,6 @@ What is object destructuring in js?
 				age: 30,
 				city: 'New York'
 			};
-
 			const { name, age, city } = person;
 			console.log(name); // Output: John
 			console.log(age);  // Output: 30
@@ -145,16 +149,13 @@ What is weakmap in javascript
 	WeakMap is a collection of key-value pairs where the keys are objects and the values can be arbitrary values.
 			class SomeClass {
 				private static _privateData = new WeakMap<SomeClass, any>();
-
 				constructor() {
 					SomeClass._privateData.set(this, { hidden: "secret" });
 				}
-
 				getSecret() {
 					return SomeClass._privateData.get(this).hidden;
 				}
 			}
-
 			let instance = new SomeClass();
 			console.log(instance.getSecret());
 
@@ -165,15 +166,12 @@ What is set in JavaScript?
 	Set maintains the insertion order of the elements and provides various methods to manipulate and iterate over its elements.
 
 			let mySet = new Set();
-
 			mySet.add(1);
 			mySet.add(5);
 			mySet.add(5); // Duplicate value, ignored
 			mySet.add('some text');
 			mySet.add({ a: 1, b: 2 });
-
 			console.log(mySet.size); // Output: 4
-
 			mySet.forEach(value => {
 				console.log(value);
 			});
@@ -187,29 +185,25 @@ What is weakset?
 
 			let obj1 = { a: 1 };
 			let obj2 = { b: 2 };
-
 			weakSet.add(obj1);
 			weakSet.add(obj2);
-
 			console.log(weakSet.has(obj1)); // Output: true
-
 			obj1 = null; // obj1 is now eligible for garbage collection
-
 			// After garbage collection, obj1 will be removed from the WeakSet
 			console.log(weakSet.has(obj1)); // Output: false (after garbage collection)
 
 
 	Set:
 
-	Stores unique values of any type.
-	Maintains insertion order.
-	Is iterable and provides methods like add, delete, has, and forEach.
+		Stores unique values of any type.
+		Maintains insertion order.
+		Is iterable and provides methods like add, delete, has, and forEach.
 
 	WeakSet:
 
-	Stores unique object references only.
-	Holds weak references, allowing garbage collection of unreferenced objects.
-	Not iterable and does not provide methods to list its elements.
+		Stores unique object references only.
+		Holds weak references, allowing garbage collection of unreferenced objects.
+		Not iterable and does not provide methods to list its elements.
 
 What is parameter destructuring?
 	Parameter destructing allows a function to unpack the object provided as an argument into one or more local variables.
@@ -241,32 +235,25 @@ TypeScript - Abstract Class
 	Example 1: 
 			abstract class Person {
 				name: string;
-				
 				constructor(name: string) {
 					this.name = name;
 				}
-
 				display(): void{
 					console.log(this.name);
 				}
-
 				abstract find(string): Person;
 			}
-
 			class Employee extends Person { 
 				empCode: number;
-				
 				constructor(name: string, code: number) { 
 					super(name); // must call super()
 					this.empCode = code;
 				}
-
 				find(name:string): Person { 
 					// execute AJAX request to find an employee from a db
 					return new Employee(name, 1);
 				}
 			}
-
 			let emp: Person = new Employee("James", 100);
 			emp.display(); //James
 			let emp2: Person = emp.find('Steve');
@@ -275,16 +262,13 @@ TypeScript - Abstract Class
 	Example 2: 
 			abstract class Person {
 				abstract name: string;
-
 				display(): void{
 					console.log(this.name);
 				}
 			}
-
 			class Employee extends Person { 
 				name: string;
 				empCode: number;
-				
 				constructor(name: string, code: number) { 
 					super(); // must call super()
 					
@@ -292,7 +276,6 @@ TypeScript - Abstract Class
 					this.name = name;
 				}
 			}
-
 			let emp: Person = new Employee("James", 100);
 			emp.display(); //James
 
@@ -304,22 +287,21 @@ what is interface in typescript
 				age: number;
 				address?: string; // Optional property
 			}
-
 			function greet(person: Person) {
 				console.log(`Hello, ${person.name}`);
 			}
-
 			const john: Person = {
 				name: 'John',
 				age: 30
 			};
-
 			greet(john); // Output: Hello, John
 
 What is application of type and interface
-	In TypeScript, both type aliases and interfaces are used to define custom types. They have some similarities but also key differences and best use cases. Here’s an overview of their applications and when to use each:
+	In TypeScript, both type aliases and interfaces are used to define custom types. They have some similarities but also key 
+	differences and best use cases. Here’s an overview of their applications and when to use each:
 	{ Type Aliases }
-	A type alias is used to create a new name for a type. It can be used for primitive types, union types, intersection types, and more. Type aliases are flexible and versatile.
+	A type alias is used to create a new name for a type. It can be used for primitive types, union types, intersection types, 
+	and more. Type aliases are flexible and versatile.
 	Union and Intersection Types:
 			type ID = string | number;
 			type NameOrAge = { name: string } & { age: number };
@@ -333,7 +315,8 @@ What is application of type and interface
 				readonly [P in keyof T]: T[P];
 			};
 	{ Interface }
-	An interface is used to define the structure of an object. It is more suited for describing the shape of objects, including properties and methods. Interfaces can be extended and implemented by classes.
+	An interface is used to define the structure of an object. It is more suited for describing the shape of objects, 
+	including properties and methods. Interfaces can be extended and implemented by classes.
 	Object Types:
 			interface Person {
 				name: string;
@@ -350,7 +333,6 @@ What is application of type and interface
 				name: string;
 				age: number;
 				location?: string;
-			
 				constructor(name: string, age: number, location?: string) {
 					this.name = name;
 					this.age = age;
@@ -385,7 +367,6 @@ What are diffrence bet type and interfaces
 			type SuccessResponse = { status: "success"; data: any };
 			type ErrorResponse = { status: "error"; message: string };
 			type Response = SuccessResponse | ErrorResponse;
-
 			type Name = { firstName: string };
 			type Surname = { lastName: string };
 			type FullName = Name & Surname;
@@ -397,18 +378,14 @@ What are diffrence bet type and interfaces
 			interface Employee {
 				work: (e) => string;
 			}
-
 			interface Manager {
-			manage: () => string;
+				manage: () => string;
 			}
-
 			type Supervisor = Employee & Manager;
-
 			let john: Supervisor = {
 				work: (e) => {return "hello" + e},
 				manage: () => "John is managing."
 			};
-
 			console.log(john.work('shashank'));   // Output: John is working.
 			console.log(john.manage()); // Output: John is managing.
 

@@ -24,7 +24,7 @@ def parse_qa_file(file_path):
 
     for line in lines:
         stripped_line = line.rstrip()  # Remove trailing spaces and newlines
-        if stripped_line and not stripped_line.startswith((" ", "\t")):  # Question
+        if stripped_line and not stripped_line.startswith((" ", "\t", "\n")):  # Question
             if code_block:
                 # Write the accumulated code block before the next question
                 html_content += f"<pre><code>{indent(code_block)}</code></pre>\n"
@@ -41,7 +41,7 @@ def parse_qa_file(file_path):
                     # Write the accumulated code block before the next non-code answer
                     html_content += f"<pre><code>{indent(code_block)}</code></pre>\n"
                     code_block = ""  # Reset the code block accumulator
-                html_content += f"<p>{stripped_line.strip()}</p>\n"
+                html_content += f"<p>{stripped_line}</p>\n"
 
     # If there's any remaining code block after the last answer
     if code_block:

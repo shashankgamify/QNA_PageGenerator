@@ -23,7 +23,8 @@ value = "Hello"; // Valid
 value = 42;      // Valid
 value = true;    // Error: Type 'boolean' is not assignable to type 'string | number'.
 </code></pre>
-<p>	Intersection: An intersection type combines multiple types into one. A value of an intersection type must satisfy all the combined types. You can create an intersection type by using the ampersand (&) symbol between the types.</p>
+<p>	Intersection: An intersection type combines multiple types into one. A value of an intersection type must satisfy all the combined types.</p>
+<p>	You can create an intersection type by using the ampersand (&) symbol between the types.</p>
 <pre><code>type A = { name: string };
 type B = { age: number };
 type C = A & B;
@@ -48,14 +49,16 @@ const person: Person = {
 <h3><b>4. Diff bet == an ===</b></h3>
 <p>	In JavaScript and TypeScript, == and === are comparison operators, but they differ in how they compare values.</p>
 <p>	== (Equality)</p>
-<p>	The == operator checks for equality between two values, but it performs type coercion if the values are of different types. Type coercion means that JavaScript tries to convert the values to the same type before making the comparison.</p>
+<p>	The == operator checks for equality between two values, but it performs type coercion if the values are of different types.</p>
+<p>	Type coercion means that JavaScript tries to convert the values to the same type before making the comparison.</p>
 <pre><code>console.log(5 == "5");  // Output: true
 console.log(false == 0);  // Output: true
 console.log(null == undefined);  // Output: true
 </code></pre>
 <p>	In the above examples, JavaScript converts the string "5" to the number 5, false to 0, and null to undefined before comparing.</p>
 <p>	=== (Strict Equality)</p>
-<p>	The === operator checks for equality between two values without performing type coercion. This means that both the value and the type must be the same for the comparison to return true.</p>
+<p>	The === operator checks for equality between two values without performing type coercion. This means that both the value and the type</p>
+<p>	must be the same for the comparison to return true.</p>
 <pre><code>console.log(5 === "5");  // Output: false
 console.log(false === 0);  // Output: false
 console.log(null === undefined);  // Output: false
@@ -65,7 +68,8 @@ console.log(null === undefined);  // Output: false
 <p>	Use == (equality) if you specifically want to allow type coercion.</p>
 <p>	In general, it's recommended to use === for most comparisons to prevent potential bugs caused by type coercion.</p>
 <h3><b>5. Implicit Type Coercion in javascript.</b></h3>
-<p>	Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.</p>
+<p>	Implicit type coercion in javascript is the automatic conversion of value from one data type to another.</p>
+<p>	It takes place when the operands of an expression are of different data types.</p>
 <p>	String coercion</p>
 <p>	String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.</p>
 <p>	Example 1:</p>
@@ -74,7 +78,8 @@ var y = "3";
 x + y // Returns "33
 </code></pre>
 <h3><b>6. Explicit Type Coercion</b></h3>
-<p>	Explicit type coercion, or type casting, occurs when you manually convert a value from one type to another using built-in functions or constructors. This is a more controlled way of converting types because it avoids unexpected behaviors caused by implicit coercion.</p>
+<p>	Explicit type coercion, or type casting, occurs when you manually convert a value from one type to another using built-in functions or constructors.</p>
+<p>	This is a more controlled way of converting types because it avoids unexpected behaviors caused by implicit coercion.</p>
 <p>		String to Number:</p>
 <pre><code>let str = "123";
 let num = Number(str); // Explicitly converts string to number
@@ -183,13 +188,13 @@ obj1 = null; // obj1 is now eligible for garbage collection
 console.log(weakSet.has(obj1)); // Output: false (after garbage collection)
 </code></pre>
 <p>	Set:</p>
-<p>	Stores unique values of any type.</p>
-<p>	Maintains insertion order.</p>
-<p>	Is iterable and provides methods like add, delete, has, and forEach.</p>
+<p>		Stores unique values of any type.</p>
+<p>		Maintains insertion order.</p>
+<p>		Is iterable and provides methods like add, delete, has, and forEach.</p>
 <p>	WeakSet:</p>
-<p>	Stores unique object references only.</p>
-<p>	Holds weak references, allowing garbage collection of unreferenced objects.</p>
-<p>	Not iterable and does not provide methods to list its elements.</p>
+<p>		Stores unique object references only.</p>
+<p>		Holds weak references, allowing garbage collection of unreferenced objects.</p>
+<p>		Not iterable and does not provide methods to list its elements.</p>
 <h3><b>17. What is parameter destructuring?</b></h3>
 <p>	Parameter destructing allows a function to unpack the object provided as an argument into one or more local variables.</p>
 <pre><code>function multiply({ a, b, c }: { a: number; b: number; c: number }) {
@@ -275,9 +280,11 @@ const john: Person = {
 greet(john); // Output: Hello, John
 </code></pre>
 <h3><b>22. What is application of type and interface</b></h3>
-<p>	In TypeScript, both type aliases and interfaces are used to define custom types. They have some similarities but also key differences and best use cases. Here’s an overview of their applications and when to use each:</p>
+<p>	In TypeScript, both type aliases and interfaces are used to define custom types. They have some similarities but also key</p>
+<p>	differences and best use cases. Here’s an overview of their applications and when to use each:</p>
 <p>	{ Type Aliases }</p>
-<p>	A type alias is used to create a new name for a type. It can be used for primitive types, union types, intersection types, and more. Type aliases are flexible and versatile.</p>
+<p>	A type alias is used to create a new name for a type. It can be used for primitive types, union types, intersection types,</p>
+<p>	and more. Type aliases are flexible and versatile.</p>
 <p>	Union and Intersection Types:</p>
 <pre><code>type ID = string | number;
 type NameOrAge = { name: string } & { age: number };
@@ -294,7 +301,8 @@ type NameOrAge = { name: string } & { age: number };
 };
 </code></pre>
 <p>	{ Interface }</p>
-<p>	An interface is used to define the structure of an object. It is more suited for describing the shape of objects, including properties and methods. Interfaces can be extended and implemented by classes.</p>
+<p>	An interface is used to define the structure of an object. It is more suited for describing the shape of objects,</p>
+<p>	including properties and methods. Interfaces can be extended and implemented by classes.</p>
 <p>	Object Types:</p>
 <pre><code>interface Person {
 	name: string;
@@ -352,7 +360,7 @@ type FullName = Name & Surname;
 	work: (e) => string;
 }
 interface Manager {
-manage: () => string;
+	manage: () => string;
 }
 type Supervisor = Employee & Manager;
 let john: Supervisor = {
