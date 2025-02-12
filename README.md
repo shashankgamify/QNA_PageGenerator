@@ -36,9 +36,9 @@ Make sure you have Python installed. Run the script using the command:
 
 
 ## File Structure:
-your_project_directory/
-│
-├── qa.txt        		# Input text file containing questions and answers
-├── index.html    		# The generated HTML file
-├── generate_html.py  	# Python script to generate the HTML
-└── style.css  	  		# css file
+	your_project_directory
+	│
+	├── qa.txt        		# Input text file containing questions and answers
+	├── index.html    		# The generated HTML file
+	├── generate_html.py  	# Python script to generate the HTML
+	└── style.css  	  		# css file
